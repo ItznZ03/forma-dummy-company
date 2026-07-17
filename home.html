@@ -84,7 +84,7 @@
             align-items: center;
         }
 
-        /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block) */
+        /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block with Hover Animation) */
         .intro-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
@@ -97,6 +97,18 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             width: 100%;
             max-width: 750px;
+            
+            /* ✨ HOVER PREPARATION TRANSITIONS */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 🚀 HOVER STATE */
+        .intro-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05);
         }
 
         .intro-text h2 {

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma - Open Source</title>
+    
+    <style>
+        /* 🌐 GLOBAL FONTS */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        @keyframes premiumPopup {
+            0% { opacity: 0; transform: scale(0.96) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .animate-popup {
+            animation: premiumPopup 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #000000;
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #F5F5F7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .master-banner {
+            width: 100%;
+            max-width: 1200px;
+            height: 240px;
+            margin: 20px auto 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .master-banner img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .gradient-wrapper {
+            width: 100vw;
+            background: linear-gradient(to bottom, #000000 0%, #1D1D1F 180px, #1D1D1F 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0 60px 0;
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 🌟 MAIN GITHUB HERO OVERLAY BLOCK */
+        .github-hero-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .github-hero-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Inline SVG GitHub Logo Styling */
+        .github-icon-svg {
+            fill: #FFFFFF;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.1));
+        }
+
+        .github-hero-card h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .github-hero-card .repo-link-text {
+            font-size: 14px;
+            color: #86868B;
+            font-family: monospace;
+            margin-bottom: 10px;
+        }
+
+        /* ⚡ 2-COLUMN FEATURE LAYOUT TILES (Adapting Technical vs Quality cards) */
+        .split-technical-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .tech-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tech-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Left side teal accent, right side green accent */
+        .tech-box.left-accent { border-top: 3px solid #30D5C8; }
+        .tech-box.right-accent { border-top: 3px solid #34C759; }
+
+        .tech-box.left-accent:hover { border-color: rgba(48, 213, 200, 0.5); }
+        .tech-box.right-accent:hover { border-color: rgba(52, 199, 89, 0.5); }
+
+        .tech-box span {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .tech-box.left-accent span { color: #30D5C8; }
+        .tech-box.right-accent span { color: #34C759; }
+
+        .tech-box h3 { font-size: 18px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
+        .tech-box p { font-size: 14px; line-height: 1.5; color: #A1A1A6; }
+
+        /* 🪵 WIDE ARCHITECTURE DETAILS TILES */
+        .wide-info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            margin-bottom: 35px;
+
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .wide-info-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .wide-info-card.yellow-accent { border-left: 3px solid #FFCC00; }
+        .wide-info-card.yellow-accent:hover { border-color: rgba(255, 204, 0, 0.4); }
+
+        .wide-info-card span { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; color: #FFCC00; }
+        .wide-info-card h3 { font-size: 20px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
+        .wide-info-card p { font-size: 14px; line-height: 1.5; color: #A1A1A6; }
+
+        /* 🔘 PREMIUM ACTION CALL BUTTON */
+        .primary-action-btn {
+            display: inline-block;
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 14px 32px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background-color 0.3s ease, 
+                        box-shadow 0.3s ease;
+        }
+
+        .primary-action-btn:hover {
+            transform: scale(1.03);
+            background-color: #F5F5F7;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer Tech Spec Badges */
+        .tech-badges-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge-item {
+            font-size: 12px;
+            color: #86868B;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        /* 📱 RESPONSIVE LAYOUT BREAKPOINTS */
+        @media (max-width: 768px) {
+            .split-technical-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .master-banner { height: 140px; }
+            .github-hero-card h1 { font-size: 26px; }
+            .github-hero-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="master-banner">
+        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/banner.png" alt="Forma Banner">
+    </div>
+
+    <div class="gradient-wrapper">
+        <div class="container animate-popup">
+            
+            <div class="github-hero-card">
+                <svg class="github-icon-svg" height="48" viewBox="0 0 16 16" width="48">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                <h1>Open Source Repository</h1>
+                <div class="repo-link-text">github.com/ItzNotZombi3/forma-dummy-company</div>
+                
+                <a href="https://github.com/ItzNotZombi3/forma-dummy-company/" target="_blank" class="primary-action-btn">
+                    Browse Repository
+                </a>
+            </div>
+
+            <div class="split-technical-grid">
+                <div class="tech-box left-accent">
+                    <span>Technical Challenge</span>
+                    <h3>Custom Logic Setup</h3>
+                    <p>Building specialized platform blocks entirely from scratch ensures absolute structural clarity, giving full, uncompromised control over layout variables without structural framework limitations.</p>
+                </div>
+                
+                <div class="tech-box right-accent">
+                    <span>Quality Control</span>
+                    <h3>Fluid Execution</h3>
+                    <p>Maintaining clear, optimized control of codebase architecture ensures clean interface rendering performance, creating a highly stable experience for all visitors.</p>
+                </div>
+            </div>
+
+            <div class="wide-info-card yellow-accent">
+                <span>Architecture Details</span>
+                <h3>Project Core &amp; Automation</h3>
+                <p>This public repository functions as the technical environment of the project. It stores all production styles, fluid layout grids, and interactive layer animations that drive the interface builder forward seamlessly.</p>
+                
+                <div class="tech-badges-row">
+                    <div class="badge-item">• HTML5 / CSS3</div>
+                    <div class="badge-item">• Component Modularity</div>
+                    <div class="badge-item">• Responsive Interface</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
         
-        /* 🎬 LARGE HOME BANNER SIZE (Retained from mockup) */
+        /* 🎬 LARGE HOME BANNER SIZE */
         .master-banner {
             width: 100%;
             max-width: 1200px; 
@@ -77,6 +77,9 @@
             max-width: 950px; 
             width: 100%;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Section Title Styling */
@@ -89,6 +92,7 @@
             background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            width: 100%;
         }
 
         /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block) */
@@ -105,17 +109,22 @@
             align-items: center;
             margin-bottom: 50px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            
+            /* 📐 UNIFORM CORE WIDTH STRUCTURE */
+            width: 100%;
+            max-width: 750px;
         }
         
         .intro-visual {
             background: #141416;
             border-radius: 12px;
-            height: 160px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
+            width: 100%;
         }
 
         .intro-visual img {
@@ -137,20 +146,24 @@
             color: #A1A1A6;
         }
 
-        /* ⚡ KEY FEATURES GRID (Centered 1-Column layout) */
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            max-width: 500px;
-            margin: 0 auto 50px auto;
+        /* ⚡ UNIFORM FEATURE CARD LAYOUT */
+        .features-container {
+            width: 100%;
+            max-width: 750px;
+            margin-bottom: 50px;
         }
 
         .feature-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
-            padding: 25px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+            align-items: center;
             transition: transform 0.3s ease;
+            width: 100%;
         }
 
         .feature-card:hover {
@@ -161,13 +174,13 @@
         .feature-image-frame {
             background: #141416;
             height: 180px;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.02);
             overflow: hidden;
+            width: 100%;
         }
 
         .feature-image-frame img {
@@ -177,16 +190,16 @@
         }
 
         .feature-card h3 {
-            font-size: 19px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
             color: #FFFFFF;
         }
 
         .feature-card p {
-            font-size: 14px;
-            line-height: 1.45;
-            color: #86868B;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #A1A1A6;
         }
 
         /* ⚖️ ADVANTAGES & CHALLENGES (Pros & Cons Section) */
@@ -194,6 +207,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 25px;
+            width: 100%;
+            max-width: 750px;
         }
 
         .split-box {
@@ -230,13 +245,39 @@
             display: block;
         }
 
-        /* Responsive Breakpoints */
+        /* 📱 FLUID TABLET & MOBILE MEDIA RESPONSIVENESS */
         @media (max-width: 768px) {
-            .intro-card, .split-section {
+            .intro-card, .feature-card {
                 grid-template-columns: 1fr;
+                padding: 24px;
+                gap: 20px;
+            }
+            .split-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             .master-banner {
+                height: 220px;
+                margin-top: 10px;
+            }
+            .section-title {
+                font-size: 26px;
+                margin-bottom: 25px;
+            }
+            .intro-visual, .feature-image-frame {
                 height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .master-banner {
+                height: 140px;
+            }
+            .intro-visual, .feature-image-frame {
+                height: 160px;
+            }
+            .intro-text h2, .feature-card h3 {
+                font-size: 20px;
             }
         }
     </style>
@@ -262,13 +303,15 @@
             </div>
 
             <h2 class="section-title">Key Features</h2>
-            <div class="features-grid">
+            <div class="features-container">
                 <div class="feature-card">
                     <div class="feature-image-frame">
                         <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/instrant-prompt-parser.png" alt="Instant Prompt Parser">
                     </div>
-                    <h3>Natural Language Compiling</h3>
-                    <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean, production-ready code blocks.</p>
+                    <div class="feature-text">
+                        <h3>Natural Language Compiling</h3>
+                        <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean code.</p>
+                    </div>
                 </div>
             </div>
 
@@ -291,7 +334,7 @@
                     <h3>Challenges</h3>
                     <div class="list-item">
                         <strong>Logic Boundaries</strong>
-                        <span>Highly complex business logic or custom algorithms may still require a small amount of human fine-tuning.</span>
+                        <span>Highly complex business logic or custom algorithms may still require a small amount of fine-tuning.</span>
                     </div>
                     <div class="list-item">
                         <strong>Prompt Clarity</strong>

@@ -21,9 +21,10 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background-color: #0B0B0F;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Inter', sans-serif;
-            color: #F5F5F7;
+            color: #FFFFFF;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -31,40 +32,31 @@
             position: relative;
         }
 
-        /* 🌌 BACKGROUND GLOW FEATURES */
+        /* 🌓 40% DARK TINT OVERLAY (5-10% Darker) */
         body::before {
             content: '';
             position: absolute;
-            top: 25%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(48, 213, 200, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        body::after {
-            content: '';
-            position: absolute;
-            bottom: 15%;
-            left: 5%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 59, 48, 0.06) 0%, transparent 70%);
-            pointer-events: none;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 10, 14, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 0;
         }
 
+        /* 🌊 FULL-WIDTH CENTERED BANNER WITH SMOOTH MASK GRADIENT */
         .master-banner {
-            width: 100%;
-            max-width: 1200px;
+            width: 100vw;
+            background: #000000;
             height: 240px;
-            margin: 20px auto 0 auto;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #111115 0%, #000000 100%);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            z-index: 1;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
         }
 
         .master-banner img {
@@ -75,11 +67,11 @@
 
         .gradient-wrapper {
             width: 100vw;
-            background: linear-gradient(to bottom, transparent 0%, #0E0E12 180px, #0B0B0F 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 30px 0 60px 0;
+            z-index: 1;
         }
 
         .container {
@@ -88,28 +80,28 @@
             padding: 0 20px;
         }
 
-        /* 📸 TREND HERO CARD */
         .feature-hero-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.85) 0%, rgba(5, 5, 10, 0.75) 100%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 24px;
             padding: 35px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             margin-bottom: 40px;
             margin-top: 20px;
             width: 100%;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .feature-hero-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(0, 113, 227, 0.5);
-            box-shadow: 0 25px 50px rgba(0, 113, 227, 0.15);
+            border-color: rgba(0, 113, 227, 0.7);
         }
 
         .main-display-frame {
             background: #131317;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 14px;
             height: 320px;
             width: 100%;
@@ -123,7 +115,7 @@
         .main-display-frame img { width: 100%; height: 100%; object-fit: cover; }
 
         .label-trend {
-            background: linear-gradient(90deg, #0071E3, #2fdfd2);
+            background: linear-gradient(90deg, #3399FF, #2fdfd2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 11px;
@@ -134,23 +126,23 @@
         }
 
         .content-block h1 { font-size: 30px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.02em; }
-        .content-block p { font-size: 15px; line-height: 1.6; color: #CECED2; }
+        .content-block p { font-size: 15px; line-height: 1.6; color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
 
         .section-title {
             font-size: 24px;
             font-weight: 700;
             text-align: center;
             margin: 50px 0 25px 0;
-            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #FFFFFF;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
             width: 100%;
         }
 
-        /* ⚡ CAREERS TILE */
         .feature-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.85) 0%, rgba(5, 5, 10, 0.75) 100%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 20px;
             padding: 30px;
             display: grid;
@@ -163,8 +155,7 @@
 
         .feature-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(48, 213, 200, 0.5);
-            box-shadow: 0 25px 50px rgba(48, 213, 200, 0.08);
+            border-color: rgba(48, 213, 200, 0.7);
         }
 
         .feature-image-frame {
@@ -173,39 +164,37 @@
             border-radius: 12px;
             overflow: hidden;
             width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .feature-image-frame img { width: 100%; height: 100%; object-fit: cover; }
         .feature-card h3 { font-size: 22px; font-weight: 600; color: #FFFFFF; margin-bottom: 10px; }
-        .feature-card p { font-size: 14.5px; line-height: 1.5; color: #CECED2; }
+        .feature-card p { font-size: 14.5px; line-height: 1.5; color: #FFFFFF; }
 
-        /* ⚖️ PROS/CONS BALANCED SQUARES */
         .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 100%; }
         .split-box {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.85) 0%, rgba(5, 5, 10, 0.75) 100%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 20px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .split-box:hover { transform: translateY(-6px); }
         
-        .split-box.advantages { border-top: 3px solid #30D5C8; }
-        .split-box.challenges { border-top: 3px solid #FF3B30; }
-        
-        .split-box.advantages:hover { border-color: rgba(48, 213, 200, 0.6); box-shadow: 0 20px 40px rgba(48, 213, 200, 0.08); }
-        .split-box.challenges:hover { border-color: rgba(255, 59, 48, 0.6); box-shadow: 0 20px 40px rgba(255, 59, 48, 0.08); }
+        .split-box.advantages { border-top: 4px solid #30D5C8; }
+        .split-box.challenges { border-top: 4px solid #FF3B30; }
 
         .split-box h3 { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #FFFFFF; }
         .list-item { margin-bottom: 16px; }
-        .list-item strong { display: block; font-size: 14px; color: #F5F5F7; margin-bottom: 4px; }
-        .list-item span { font-size: 13px; color: #A1A1A6; display: block; line-height: 1.4; }
+        .list-item strong { display: block; font-size: 14px; color: #FFFFFF; margin-bottom: 4px; font-weight: 600; }
+        .list-item span { font-size: 13px; color: #E2E2E7; display: block; line-height: 1.4; }
 
         @media (max-width: 768px) {
             .main-display-frame { height: 240px; }
-            .master-banner { height: 140px; border-radius: 0; margin-top: 0; }
+            .master-banner { height: 140px; }
             .feature-card { grid-template-columns: 1fr; padding: 24px; gap: 20px; }
             .feature-image-frame { height: 200px; }
             .split-section { grid-template-columns: 1fr; gap: 20px; }

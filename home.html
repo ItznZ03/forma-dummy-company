@@ -40,6 +40,7 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         
         /* 🎬 LARGE HOME BANNER SIZE */
@@ -70,7 +71,8 @@
             flex-direction: column;
             align-items: center;
             padding-top: 30px; 
-            padding-bottom: 60px;
+            padding-bottom: 80px;
+            flex-grow: 1;
         }
 
         .container {
@@ -82,27 +84,15 @@
             align-items: center;
         }
 
-        /* Section Title Styling */
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            text-align: center;
-            letter-spacing: -0.02em;
-            margin-bottom: 35px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            width: 100%;
-        }
-
-        /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block - Image Removed) */
+        /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block) */
         .intro-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 35px 40px;
+            padding: 40px;
+            margin-top: 20px;
             margin-bottom: 50px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             width: 100%;
@@ -110,151 +100,52 @@
         }
 
         .intro-text h2 {
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 14px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
             color: #FFFFFF;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .intro-text p {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
             color: #A1A1A6;
         }
 
-        /* ⚡ UNIFORM FEATURE CARD LAYOUT */
-        .features-container {
+        /* 📝 DUMMY COPYRIGHT FOOTER SECTION */
+        .site-footer {
             width: 100%;
             max-width: 750px;
-            margin-bottom: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 30px;
+            margin-top: auto;
+            text-align: center;
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 30px;
-            align-items: center;
-            transition: transform 0.3s ease;
-            width: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .feature-image-frame {
-            background: #141416;
-            height: 180px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .feature-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #FFFFFF;
-        }
-
-        .feature-card p {
-            font-size: 15px;
-            line-height: 1.5;
-            color: #A1A1A6;
-        }
-
-        /* ⚖️ ADVANTAGES & CHALLENGES (Pros & Cons Section) */
-        .split-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            width: 100%;
-            max-width: 750px;
-        }
-
-        .split-box {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .split-box.advantages { border-top: 3px solid #30D5C8; }
-        .split-box.challenges { border-top: 3px solid #FF3B30; }
-
-        .split-box h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #FFFFFF;
-        }
-
-        .list-item {
-            margin-bottom: 12px;
-        }
-
-        .list-item strong {
-            display: block;
-            font-size: 14px;
-            color: #F5F5F7;
-            margin-bottom: 2px;
-        }
-
-        .list-item span {
+        .site-footer p {
             font-size: 13px;
-            color: #86868B;
-            display: block;
+            color: #6E6E73;
+            letter-spacing: 0.02em;
         }
 
-        /* 📱 TABLET & MOBILE RESPONSIVENESS */
+        /* 📱 RESPONSIVE BREAKPOINTS */
         @media (max-width: 768px) {
-            .feature-card {
-                grid-template-columns: 1fr;
-                padding: 24px;
-                gap: 20px;
-            }
-            .split-section {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
             .master-banner {
                 height: 220px;
                 margin-top: 10px;
             }
-            .section-title {
-                font-size: 26px;
-                margin-bottom: 25px;
+            .intro-card {
+                padding: 30px 24px;
             }
-            .feature-image-frame {
-                height: 200px;
+            .intro-text h2 {
+                font-size: 24px;
             }
         }
 
         @media (max-width: 480px) {
             .master-banner {
                 height: 140px;
-            }
-            .feature-image-frame {
-                height: 160px;
-            }
-            .intro-text h2, .feature-card h3 {
-                font-size: 20px;
             }
         }
     </style>
@@ -275,45 +166,9 @@
                 </div>
             </div>
 
-            <h2 class="section-title">Key Features</h2>
-            <div class="features-container">
-                <div class="feature-card">
-                    <div class="feature-image-frame">
-                        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/instrant-prompt-parser.png" alt="Instant Prompt Parser">
-                    </div>
-                    <div class="feature-text">
-                        <h3>Natural Language Compiling</h3>
-                        <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean, production-ready code blocks.</p>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="section-title">Pros &amp; Cons</h2>
-            <div class="split-section">
-                <div class="split-box advantages">
-                    <h3>Advantages</h3>
-                    <div class="list-item">
-                        <strong>Rapid Prototyping</strong>
-                        <span>Shortens typical software development cycles from months down to a few minutes.</span>
-                    </div>
-                    <div class="list-item">
-                        <strong>No-Code Control</strong>
-                        <span>Allows founders and product leaders to launch software directly without engineering roadblocks.</span>
-                    </div>
-                </div>
-
-                <div class="split-box challenges">
-                    <h3>Challenges</h3>
-                    <div class="list-item">
-                        <strong>Logic Boundaries</strong>
-                        <span>Highly complex business logic or custom algorithms may still require a small amount of human fine-tuning.</span>
-                    </div>
-                    <div class="list-item">
-                        <strong>Prompt Clarity</strong>
-                        <span>The quality and accuracy of the generated app depends completely on how detailed your written instructions are.</span>
-                    </div>
-                </div>
-            </div>
+            <footer class="site-footer">
+                <p>&copy; 2026 Forma. Engineered by ItzNotZombi3. All rights reserved.</p>
+            </footer>
 
         </div>
     </div>

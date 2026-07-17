@@ -6,19 +6,11 @@
     <title>Forma - Home</title>
     
     <style>
-        /* 🌐 IMPORT GLOBAL INTER FONT VIA CSS */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        /* 🎬 PREMIUM CUBIC-BEZIER ENTRANCE ANIMATION */
         @keyframes premiumPopup {
-            0% {
-                opacity: 0;
-                transform: scale(0.96) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            0% { opacity: 0; transform: scale(0.96) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .animate-popup {
@@ -26,24 +18,34 @@
             opacity: 0;
         }
 
-        /* Base Reset & Core Styling */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: #000000;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0B0B0F;
+            font-family: 'Inter', sans-serif;
             color: #F5F5F7;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
+        }
+
+        /* 🌌 AMBIENT BACKGROUND GLOWS */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, rgba(48, 213, 200, 0.05) 50%, transparent 100%);
+            z-index: 0;
+            pointer-events: none;
         }
         
-        /* 🎬 LARGE HOME BANNER SIZE */
         .master-banner {
             width: 100%;
             max-width: 1200px; 
@@ -53,7 +55,10 @@
             overflow: hidden;
             height: 380px;      
             margin: 20px auto 0 auto;
-            background-color: #000000;
+            background: linear-gradient(135deg, #111115 0%, #000000 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            z-index: 1;
         }
 
         .master-banner img {
@@ -63,20 +68,20 @@
             object-fit: contain;
         }
 
-        /* 🎨 DYNAMIC GRADIENT TRANSITION SECTION */
         .gradient-wrapper {
             width: 100vw;
-            background: linear-gradient(to bottom, #000000 0%, #1D1D1F 180px, #1D1D1F 100%);
+            background: linear-gradient(to bottom, transparent 0%, #0E0E12 300px, #0B0B0F 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 30px; 
+            padding-top: 40px; 
             padding-bottom: 80px;
             flex-grow: 1;
+            z-index: 1;
         }
 
         .container {
-            max-width: 950px; 
+            max-width: 750px; 
             width: 100%;
             padding: 0 20px;
             display: flex;
@@ -84,51 +89,58 @@
             align-items: center;
         }
 
-        /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block with Hover Animation) */
+        /* 🌟 TEXT TILE WITH TRANSLUCENT MESH & GRADIENT BORDER */
         .intro-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 20px;
-            margin-bottom: 50px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 24px;
+            padding: 45px;
+            margin-top: 10px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             width: 100%;
-            max-width: 750px;
             
-            /* ✨ HOVER PREPARATION TRANSITIONS */
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                         border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                         box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* 🚀 HOVER STATE */
         .intro-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 113, 227, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.1), 0 0 30px rgba(48, 213, 200, 0.1);
+        }
+
+        .sector-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #0071E3, #30D5C8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
         }
 
         .intro-text h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             color: #FFFFFF;
             letter-spacing: -0.02em;
         }
 
         .intro-text p {
             font-size: 16px;
-            line-height: 1.6;
-            color: #A1A1A6;
+            line-height: 1.65;
+            color: #CECED2;
         }
 
-        /* 📝 DUMMY COPYRIGHT FOOTER SECTION */
         .site-footer {
             width: 100%;
-            max-width: 750px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 30px;
             margin-top: auto;
@@ -141,24 +153,10 @@
             letter-spacing: 0.02em;
         }
 
-        /* 📱 RESPONSIVE BREAKPOINTS */
         @media (max-width: 768px) {
-            .master-banner {
-                height: 220px;
-                margin-top: 10px;
-            }
-            .intro-card {
-                padding: 30px 24px;
-            }
-            .intro-text h2 {
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .master-banner {
-                height: 140px;
-            }
+            .master-banner { height: 220px; border-radius: 0; margin-top: 0; }
+            .intro-card { padding: 35px 24px; }
+            .intro-text h2 { font-size: 26px; }
         }
     </style>
 </head>
@@ -172,9 +170,10 @@
         <div class="container animate-popup">
             
             <div class="intro-card">
+                <div class="sector-badge">ICT Sector Focus: Artificial Intelligence &amp; Cloud Computing</div>
                 <div class="intro-text">
                     <h2>What is Forma?</h2>
-                    <p>Forma is an AI-driven platform built to turn simple text descriptions into fully working software. By bridging the gap between an idea and actual code, it speeds up development and allows teams to build and deploy complex systems instantly.</p>
+                    <p>Forma is an AI platform built to turn simple text descriptions into fully working software apps. Instead of manually writing thousands of lines of code, users can just explain what they want to build in plain English. By bridging the gap between an idea and a functional product, it speeds up development and allows teams to launch software instantly.</p>
                 </div>
             </div>
 

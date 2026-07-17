@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forma - Dynamic Interface</title>
+    <title>Forma - Tech Trends & Insights</title>
     
     <style>
-        /* 🌐 GLOBAL FONTS */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         @keyframes premiumPopup {
@@ -22,13 +21,36 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background-color: #000000;
-            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: #0B0B0F;
+            font-family: 'Inter', sans-serif;
             color: #F5F5F7;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 🌌 BACKGROUND GLOW FEATURES */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(48, 213, 200, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 59, 48, 0.06) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .master-banner {
@@ -40,7 +62,9 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: #000000;
+            background: linear-gradient(135deg, #111115 0%, #000000 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .master-banner img {
@@ -51,7 +75,7 @@
 
         .gradient-wrapper {
             width: 100vw;
-            background: linear-gradient(to bottom, #000000 0%, #1D1D1F 180px, #1D1D1F 100%);
+            background: linear-gradient(to bottom, transparent 0%, #0E0E12 180px, #0B0B0F 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -64,34 +88,30 @@
             padding: 0 20px;
         }
 
-        /* 📸 MAIN FEATURE HERO CARD */
+        /* 📸 TREND HERO CARD */
         .feature-hero-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 35px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             margin-bottom: 40px;
             margin-top: 20px;
             width: 100%;
-            
-            /* ✨ HOVER INTERACTION SETUP */
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .feature-hero-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 113, 227, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 113, 227, 0.15);
         }
 
         .main-display-frame {
-            background: #141416;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            height: 340px;
+            background: #131317;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            height: 320px;
             width: 100%;
             overflow: hidden;
             margin-bottom: 30px;
@@ -100,172 +120,95 @@
             justify-content: center;
         }
 
-        .main-display-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .main-display-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .content-block h1 {
-            font-size: 32px;
+        .label-trend {
+            background: linear-gradient(90deg, #0071E3, #2fdfd2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 11px;
             font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 8px;
         }
 
-        .content-block p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #A1A1A6;
-            margin-bottom: 25px;
-        }
+        .content-block h1 { font-size: 30px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.02em; }
+        .content-block p { font-size: 15px; line-height: 1.6; color: #CECED2; }
 
-        /* Section Sub-titles */
         .section-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             text-align: center;
-            letter-spacing: -0.02em;
-            margin: 20px 0 30px 0;
+            margin: 50px 0 25px 0;
             background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             width: 100%;
         }
 
-        /* ⚡ KEY FEATURES LAYOUT PANEL */
-        .features-container {
-            width: 100%;
-            margin-bottom: 40px;
-        }
-
+        /* ⚡ CAREERS TILE */
         .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
             padding: 30px;
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 30px;
             align-items: center;
             width: 100%;
-
-            /* ✨ HOVER INTERACTION SETUP */
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .feature-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.03);
+            border-color: rgba(48, 213, 200, 0.5);
+            box-shadow: 0 25px 50px rgba(48, 213, 200, 0.08);
         }
 
         .feature-image-frame {
-            background: #141416;
+            background: #131317;
             height: 180px;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.02);
             overflow: hidden;
             width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .feature-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .feature-image-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .feature-card h3 { font-size: 22px; font-weight: 600; color: #FFFFFF; margin-bottom: 10px; }
+        .feature-card p { font-size: 14.5px; line-height: 1.5; color: #CECED2; }
 
-        .feature-card h3 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #FFFFFF;
-        }
-
-        .feature-card p {
-            font-size: 15px;
-            line-height: 1.5;
-            color: #A1A1A6;
-        }
-
-        /* ⚖️ PROS & CONS SPLIT OVERVIEWS */
-        .split-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            width: 100%;
-        }
-
+        /* ⚖️ PROS/CONS BALANCED SQUARES */
+        .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 100%; }
         .split-box {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-
-            /* ✨ HOVER INTERACTION SETUP */
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .split-box:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-
+        .split-box:hover { transform: translateY(-6px); }
+        
         .split-box.advantages { border-top: 3px solid #30D5C8; }
         .split-box.challenges { border-top: 3px solid #FF3B30; }
+        
+        .split-box.advantages:hover { border-color: rgba(48, 213, 200, 0.6); box-shadow: 0 20px 40px rgba(48, 213, 200, 0.08); }
+        .split-box.challenges:hover { border-color: rgba(255, 59, 48, 0.6); box-shadow: 0 20px 40px rgba(255, 59, 48, 0.08); }
 
-        .split-box.advantages:hover { border-color: rgba(48, 213, 200, 0.5); }
-        .split-box.challenges:hover { border-color: rgba(255, 59, 48, 0.5); }
+        .split-box h3 { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #FFFFFF; }
+        .list-item { margin-bottom: 16px; }
+        .list-item strong { display: block; font-size: 14px; color: #F5F5F7; margin-bottom: 4px; }
+        .list-item span { font-size: 13px; color: #A1A1A6; display: block; line-height: 1.4; }
 
-        .split-box h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #FFFFFF;
-        }
-
-        .list-item {
-            margin-bottom: 12px;
-        }
-
-        .list-item strong {
-            display: block;
-            font-size: 14px;
-            color: #F5F5F7;
-            margin-bottom: 2px;
-        }
-
-        .list-item span {
-            font-size: 13px;
-            color: #86868B;
-            display: block;
-        }
-
-        /* 📱 RESPONSIVE MEDIA RULES */
         @media (max-width: 768px) {
             .main-display-frame { height: 240px; }
-            .content-block h1 { font-size: 26px; }
-            .master-banner { height: 140px; }
-            .feature-card {
-                grid-template-columns: 1fr;
-                padding: 24px;
-                gap: 20px;
-            }
-            .feature-image-frame {
-                height: 200px;
-            }
-            .split-section {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+            .master-banner { height: 140px; border-radius: 0; margin-top: 0; }
+            .feature-card { grid-template-columns: 1fr; padding: 24px; gap: 20px; }
+            .feature-image-frame { height: 200px; }
+            .split-section { grid-template-columns: 1fr; gap: 20px; }
         }
     </style>
 </head>
@@ -278,54 +221,58 @@
     <div class="gradient-wrapper">
         <div class="container animate-popup">
             
+            <!-- SECTOR TREND -->
             <div class="feature-hero-card">
                 <div class="main-display-frame">
-                    <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/dyna-interf-prev.png" alt="Dynamic Interface Preview">
+                    <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/dyna-interf-prev.png" alt="Interface Framework">
                 </div>
                 
                 <div class="content-block">
-                    <h1>Dynamic Interface Previews</h1>
-                    <p>Experience true visual layout modularity. As your core system changes, layouts assemble and compute layout parameters dynamically. The responsive framework allows engineers and product teams to instantly monitor nested component spaces inside a singular view canvas.</p>
+                    <div class="label-trend">Major ICT Trend: Generative AI &amp; Low-Code Automation</div>
+                    <h1>Dynamic Visual Assembly</h1>
+                    <p>Modern technology is moving away from manual coding towards intelligent automation. Forma represents this shift by compiling functional layouts on the fly. This shows how cloud networks and machine learning work together to build visual user environments without deployment lag.</p>
                 </div>
             </div>
 
-            <h2 class="section-title">Key Features</h2>
+            <!-- CAREERS -->
+            <h2 class="section-title">Career &amp; Business Prospects</h2>
             <div class="features-container">
                 <div class="feature-card">
                     <div class="feature-image-frame">
-                        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/instrant-prompt-parser.png" alt="Instant Prompt Parser">
+                        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/instrant-prompt-parser.png" alt="Prompt Engineering">
                     </div>
                     <div class="feature-text">
-                        <h3>Natural Language Compiling</h3>
-                        <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean, production-ready code blocks.</p>
+                        <h3>Emerging Industry Roles</h3>
+                        <p>This tech movement opens up major business opportunities for startups to launch digital tools quickly and cheaply. It also creates valuable new career tracks, including AI Prompt Architects, Product Integration Consultants, and Low-Code Workflow Analysts.</p>
                     </div>
                 </div>
             </div>
 
-            <h2 class="section-title">Pros &amp; Cons</h2>
+            <!-- QUALITIES & ISSUES -->
+            <h2 class="section-title">Entrepreneurship &amp; Industry Issues</h2>
             <div class="split-section">
                 
                 <div class="split-box advantages">
-                    <h3>Advantages</h3>
+                    <h3>Successful Entrepreneur Qualities</h3>
                     <div class="list-item">
-                        <strong>Rapid Prototyping</strong>
-                        <span>Shortens typical software development cycles from months down to a few minutes.</span>
+                        <strong>Strategic Adaptability</strong>
+                        <span>The tech industry changes fast. Successful leaders must actively update their skills as automated tools improve.</span>
                     </div>
                     <div class="list-item">
-                        <strong>No-Code Control</strong>
-                        <span>Allows founders and product leaders to launch software directly without engineering roadblocks.</span>
+                        <strong>Problem-First Vision</strong>
+                        <span>Great founders focus on real-world market problems, using AI tools simply as a fast way to build the solution.</span>
                     </div>
                 </div>
 
                 <div class="split-box challenges">
-                    <h3>Challenges</h3>
+                    <h3>Current Issues in ICT</h3>
                     <div class="list-item">
-                        <strong>Logic Boundaries</strong>
-                        <span>Highly complex business logic or custom algorithms may still require a small amount of human fine-tuning.</span>
+                        <strong>The Automation Skills Gap</strong>
+                        <span>Over-reliance on automated tools can lower basic programming knowledge among entry-level developers.</span>
                     </div>
                     <div class="list-item">
-                        <strong>Prompt Clarity</strong>
-                        <span>The quality and accuracy of the generated app depends completely on how detailed your written instructions are.</span>
+                        <strong>Logic &amp; Quality Control</strong>
+                        <span>AI models can generate errors. Human verification is still required to guarantee security and system accuracy.</span>
                     </div>
                 </div>
 

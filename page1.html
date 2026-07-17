@@ -1,25 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forma - Core Features</title>
+    <title>Forma - Dynamic Interface</title>
     
     <style>
-        /* 🌐 IMPORT GLOBAL INTER FONT VIA CSS */
+        /* 🌐 GLOBAL FONTS */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        /* 🎬 PREMIUM CUBIC-BEZIER ENTRANCE ANIMATION */
         @keyframes premiumPopup {
-            0% {
-                opacity: 0;
-                transform: scale(0.96) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            0% { opacity: 0; transform: scale(0.96) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .animate-popup {
@@ -27,15 +19,11 @@
             opacity: 0;
         }
 
-        /* Base Reset & Core Styling */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             background-color: #000000;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             color: #F5F5F7;
             display: flex;
             flex-direction: column;
@@ -43,213 +31,162 @@
             overflow-x: hidden;
         }
 
-        /* 🧭 TOP-LEFT HEADER BRANDING AREA */
-        .corner-header {
+        .master-banner {
             width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 20px 20px; 
+            height: 240px;
+            margin: 20px auto 0 auto;
             display: flex;
-            justify-content: flex-start;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #000000;
         }
 
-        .corner-header img {
-            /* 🚀 BUMPED UP BRANDING PRESENCE */
-            height: 90px; 
-            width: auto;
+        .master-banner img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.08));
         }
-        
-        /* 🎨 DYNAMIC GRADIENT TRANSITION SECTION */
+
         .gradient-wrapper {
             width: 100vw;
             background: linear-gradient(to bottom, #000000 0%, #1D1D1F 180px, #1D1D1F 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 10px; 
-            padding-bottom: 60px;
+            padding: 30px 0 60px 0;
         }
 
         .container {
-            max-width: 950px; 
+            max-width: 750px;
             width: 100%;
             padding: 0 20px;
         }
 
-        /* Page Main Title */
-        .page-title {
-            font-size: 40px;
-            font-weight: 800;
-            text-align: center;
-            letter-spacing: -0.03em;
-            margin-bottom: 50px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Nav links to return home */
+        .back-nav {
+            margin-bottom: 30px;
         }
 
-        /* ⚡ FEATURE DISPLAY LAYOUT */
-        .feature-showcase {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+        .back-nav a {
+            color: #0071E3;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        /* Large Feature Row */
-        .feature-row {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .back-nav a:hover {
+            color: #2997FF;
+            text-decoration: underline;
+        }
+
+        .feature-hero-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 35px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
         }
 
-        /* Reverse order for alternative blocks to create an alternating design flow */
-        .feature-row.reverse {
-            grid-template-columns: 0.9fr 1.1fr;
-        }
-
-        /* 🖼️ IMAGE PLACEHOLDER STYLING */
-        .image-frame {
+        .main-display-frame {
             background: #141416;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 14px;
-            height: 240px;
+            border-radius: 12px;
+            height: 340px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #6E6E73;
-            font-size: 13px;
-            letter-spacing: 0.03em;
-            width: 100%;
-            overflow: hidden;
         }
 
-        /* Text Content Layout inside rows */
-        .feature-details h3 {
-            font-size: 24px;
+        .main-display-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-block h1 {
+            font-size: 32px;
             font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
         }
 
-        .feature-details p {
-            font-size: 15px;
+        .content-block p {
+            font-size: 16px;
             line-height: 1.6;
             color: #A1A1A6;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* Highlight Sub-bullet layouts */
-        .capability-tags {
+        .spec-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
         }
 
-        .capability-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
+        .spec-item h4 {
+            font-size: 15px;
+            font-weight: 600;
             color: #F5F5F7;
+            margin-bottom: 4px;
         }
 
-        .capability-item .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #0071E3; 
-            border-radius: 50%;
-            margin-top: 7px;
-            flex-shrink: 0;
+        .spec-item p {
+            font-size: 14px;
+            color: #86868B;
+            margin: 0;
+            line-height: 1.4;
         }
 
-        /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .feature-row, .feature-row.reverse {
-                grid-template-columns: 1fr;
-                padding: 25px;
-                gap: 25px;
-            }
-            .feature-row.reverse .image-frame {
-                order: -1;
-            }
-            .page-title {
-                font-size: 32px;
-                margin-bottom: 35px;
-            }
-            .image-frame {
-                height: 180px;
-            }
-            .corner-header img {
-                height: 60px; /* Adapts beautifully to mobile viewports */
-            }
+            .main-display-frame { height: 240px; }
+            .content-block h1 { font-size: 26px; }
+            .master-banner { height: 140px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="corner-header">
-        <img src="images/forma-top-left.png" alt="Forma Logo">
-    </header>
+    <div class="master-banner">
+        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/banner.png" alt="Forma Banner">
+    </div>
 
     <div class="gradient-wrapper">
-        
         <div class="container animate-popup">
             
-            <h1 class="page-title">Core Architecture</h1>
+            <nav class="back-nav">
+                <a href="home.html">← Back to Overview</a>
+            </nav>
 
-            <div class="feature-showcase">
+            <div class="feature-hero-card">
+                <div class="main-display-frame">
+                    <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/dyna-interf-prev.png" alt="Dynamic Interface Preview">
+                </div>
                 
-                <div class="feature-row">
-                    <div class="image-frame">
-                        [ Photo Placeholder: Natural Language Compiler Interface ]
-                    </div>
-                    <div class="feature-details">
-                        <h3>Natural Language Compiling</h3>
-                        <p>Forma translates basic text descriptions into complete, structured web interfaces. Instead of manually writing syntax line-by-line, users describe the desired outcome and the compiler handles the conversion layout directly.</p>
-                        
-                        <div class="capability-tags">
-                            <div class="capability-item">
-                                <div class="dot"></div>
-                                <span>Parses regular vocabulary definitions into modern HTML, CSS, and component stacks.</span>
-                            </div>
-                            <div class="capability-item">
-                                <div class="dot"></div>
-                                <span>Reduces development friction so you can focus entirely on system logic and layout.</span>
-                            </div>
+                <div class="content-block">
+                    <h1>Dynamic Interface Previews</h1>
+                    <p>Experience true visual layout modularity. As your core system changes, layouts assemble and compute layout parameters dynamically. The responsive framework allows engineers and product teams to instantly monitor nested component spaces inside a singular view canvas.</p>
+                    
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <h4>Real-Time Layout Compiling</h4>
+                            <p>Eliminates separate development compile steps by pushing structural interface renders directly to viewports.</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Fluid Grid Breakpoints</h4>
+                            <p>Automatically generates relative layout dimensions, ensuring your output layout performs seamlessly on mobile and web viewports.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="feature-row reverse">
-                    <div class="feature-details">
-                        <h3>Automated Infrastructure</h3>
-                        <p>The engine builds more than just the visual frontend. It simultaneously generates operational backend components, including structured relational database schemas and protected API links automatically.</p>
-                        
-                        <div class="capability-tags">
-                            <div class="capability-item">
-                                <div class="dot"></div>
-                                <span>Creates secure links between your UI forms and storage frameworks without manual server work.</span>
-                            </div>
-                            <div class="capability-item">
-                                <div class="dot"></div>
-                                <span>Ensures clean system deployment routes built directly from the initial text input instructions.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="image-frame">
-                        [ Photo Placeholder: Automated Database & Backend Schemas ]
-                    </div>
-                </div>
-
             </div>
 
         </div>

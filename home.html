@@ -108,17 +108,20 @@
         }
         
         .intro-visual {
-            background: linear-gradient(135deg, rgba(125, 95, 255, 0.12), rgba(0, 113, 227, 0.12));
+            background: #141416;
             border-radius: 12px;
             height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            color: #86868B;
-            font-size: 12px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            overflow: hidden;
+        }
+
+        .intro-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .intro-text h2 {
@@ -134,12 +137,12 @@
             color: #A1A1A6;
         }
 
-        /* ⚡ KEY FEATURES GRID (2 Columns) */
+        /* ⚡ KEY FEATURES GRID (Centered 1-Column layout) */
         .features-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 50px;
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto 50px auto;
         }
 
         .feature-card {
@@ -155,17 +158,22 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
 
-        .feature-image-placeholder {
+        .feature-image-frame {
             background: #141416;
-            height: 130px;
+            height: 180px;
             border-radius: 8px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #6E6E73;
-            font-size: 11px;
             border: 1px solid rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+        }
+
+        .feature-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .feature-card h3 {
@@ -224,7 +232,7 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .intro-card, .features-grid, .split-section {
+            .intro-card, .split-section {
                 grid-template-columns: 1fr;
             }
             .master-banner {
@@ -245,7 +253,7 @@
             
             <div class="intro-card">
                 <div class="intro-visual">
-                    [ Dynamic Interface Preview ]
+                    <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/dyna-interf-prev.png" alt="Dynamic Interface Preview">
                 </div>
                 <div class="intro-text">
                     <h2>What is Forma?</h2>
@@ -256,14 +264,11 @@
             <h2 class="section-title">Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-image-placeholder">[ Graphic: Instant Prompt Parser ]</div>
+                    <div class="feature-image-frame">
+                        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/instrant-prompt-parser.png" alt="Instant Prompt Parser">
+                    </div>
                     <h3>Natural Language Compiling</h3>
                     <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean, production-ready code blocks.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-image-placeholder">[ Graphic: Database Architect ]</div>
-                    <h3>Automated Infrastructure</h3>
-                    <p>Forma automatically configures databases, sets up secure server links, and structures live web components without needing any manual setup.</p>
                 </div>
             </div>
 

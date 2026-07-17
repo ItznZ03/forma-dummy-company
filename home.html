@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* 🌐 IMPORT GLOBAL INTER FONT VIA CSS TO BYPASS VALIDATOR ERRORS */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+        /* Base Reset & Core Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #000000;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #F5F5F7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        /* 🎬 PROMINENT BANNER SIZE */
+        .master-banner {
+            width: 100%;
+            max-width: 1200px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 380px;      
+            margin: 20px auto 0 auto;
+            background-color: #000000;
+        }
+
+        .master-banner img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* 🎨 DYNAMIC GRADIENT TRANSITION SECTION */
+        .gradient-wrapper {
+            width: 100vw;
+            background: linear-gradient(to bottom, #000000 0%, #1D1D1F 180px, #1D1D1F 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 950px; 
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: -0.02em;
+            margin-bottom: 35px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 🌟 GLASSMORPHISM OVERLAY CARD (Intro Block) */
+        .intro-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .intro-visual {
+            background: linear-gradient(135deg, rgba(125, 95, 255, 0.12), rgba(0, 113, 227, 0.12));
+            border-radius: 12px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #86868B;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .intro-text h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+
+        .intro-text p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #A1A1A6;
+        }
+
+        /* ⚡ KEY FEATURES GRID (2 Columns) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-image-placeholder {
+            background: #141416;
+            height: 130px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6E6E73;
+            font-size: 11px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .feature-card h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #FFFFFF;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.45;
+            color: #86868B;
+        }
+
+        /* ⚖️ ADVANTAGES & CHALLENGES (Pros & Cons Section) */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .split-box {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .split-box.advantages { border-top: 3px solid #30D5C8; }
+        .split-box.challenges { border-top: 3px solid #FF3B30; }
+
+        .split-box h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+
+        .list-item {
+            margin-bottom: 12px;
+        }
+
+        .list-item strong {
+            display: block;
+            font-size: 14px;
+            color: #F5F5F7;
+            margin-bottom: 2px;
+        }
+
+        .list-item span {
+            font-size: 13px;
+            color: #86868B;
+            display: block;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .intro-card, .features-grid, .split-section {
+                grid-template-columns: 1fr;
+            }
+            .master-banner {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="master-banner">
+        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/banner.png" alt="Forma Banner">
+    </div>
+
+    <div class="gradient-wrapper">
+        
+        <div class="container">
+            
+            <div class="intro-card">
+                <div class="intro-visual">
+                    [ Dynamic Interface Preview ]
+                </div>
+                <div class="intro-text">
+                    <h2>What is Forma?</h2>
+                    <p>Forma is an AI-driven platform built to turn simple text descriptions into fully working software. By bridging the gap between an idea and actual code, it speeds up development and allows teams to build and deploy complex systems instantly.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-image-placeholder">[ Graphic: Instant Prompt Parser ]</div>
+                    <h3>Natural Language Compiling</h3>
+                    <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean, production-ready code blocks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image-placeholder">[ Graphic: Database Architect ]</div>
+                    <h3>Automated Infrastructure</h3>
+                    <p>Forma automatically configures databases, sets up secure server links, and structures live web components without needing any manual setup.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Pros &amp; Cons</h2>
+            <div class="split-section">
+                
+                <div class="split-box advantages">
+                    <h3>Advantages</h3>
+                    <div class="list-item">
+                        <strong>Rapid Prototyping</strong>
+                        <span>Shortens typical software development cycles from months down to a few minutes.</span>
+                    </div>
+                    <div class="list-item">
+                        <strong>No-Code Control</strong>
+                        <span>Allows founders and product leaders to launch software directly without engineering roadblocks.</span>
+                    </div>
+                </div>
+
+                <div class="split-box challenges">
+                    <h3>Challenges</h3>
+                    <div class="list-item">
+                        <strong>Logic Boundaries</strong>
+                        <span>Highly complex business logic or custom algorithms may still require a small amount of human fine-tuning.</span>
+                    </div>
+                    <div class="list-item">
+                        <strong>Prompt Clarity</strong>
+                        <span>The quality and accuracy of the generated app depends completely on how detailed your written instructions are.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

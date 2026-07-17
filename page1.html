@@ -64,24 +64,7 @@
             padding: 0 20px;
         }
 
-        /* Nav links to return home */
-        .back-nav {
-            margin-bottom: 30px;
-        }
-
-        .back-nav a {
-            color: #0071E3;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .back-nav a:hover {
-            color: #2997FF;
-            text-decoration: underline;
-        }
-
+        /* 📸 MAIN FEATURE HERO CARD */
         .feature-hero-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -89,6 +72,19 @@
             padding: 35px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             margin-bottom: 40px;
+            margin-top: 20px;
+            width: 100%;
+            
+            /* ✨ HOVER INTERACTION SETUP */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .feature-hero-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05);
         }
 
         .main-display-frame {
@@ -125,32 +121,151 @@
             margin-bottom: 25px;
         }
 
-        .spec-list {
+        /* Section Sub-titles */
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: -0.02em;
+            margin: 20px 0 30px 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 100%;
+        }
+
+        /* ⚡ KEY FEATURES LAYOUT PANEL */
+        .features-container {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+            align-items: center;
+            width: 100%;
+
+            /* ✨ HOVER INTERACTION SETUP */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.03);
+        }
+
+        .feature-image-frame {
+            background: #141416;
+            height: 180px;
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 25px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+            width: 100%;
         }
 
-        .spec-item h4 {
-            font-size: 15px;
+        .feature-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
             font-weight: 600;
-            color: #F5F5F7;
-            margin-bottom: 4px;
+            margin-bottom: 10px;
+            color: #FFFFFF;
         }
 
-        .spec-item p {
+        .feature-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #A1A1A6;
+        }
+
+        /* ⚖️ PROS & CONS SPLIT OVERVIEWS */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .split-box {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+
+            /* ✨ HOVER INTERACTION SETUP */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .split-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .split-box.advantages { border-top: 3px solid #30D5C8; }
+        .split-box.challenges { border-top: 3px solid #FF3B30; }
+
+        .split-box.advantages:hover { border-color: rgba(48, 213, 200, 0.5); }
+        .split-box.challenges:hover { border-color: rgba(255, 59, 48, 0.5); }
+
+        .split-box h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+
+        .list-item {
+            margin-bottom: 12px;
+        }
+
+        .list-item strong {
+            display: block;
             font-size: 14px;
-            color: #86868B;
-            margin: 0;
-            line-height: 1.4;
+            color: #F5F5F7;
+            margin-bottom: 2px;
         }
 
+        .list-item span {
+            font-size: 13px;
+            color: #86868B;
+            display: block;
+        }
+
+        /* 📱 RESPONSIVE MEDIA RULES */
         @media (max-width: 768px) {
             .main-display-frame { height: 240px; }
             .content-block h1 { font-size: 26px; }
             .master-banner { height: 140px; }
+            .feature-card {
+                grid-template-columns: 1fr;
+                padding: 24px;
+                gap: 20px;
+            }
+            .feature-image-frame {
+                height: 200px;
+            }
+            .split-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -163,10 +278,6 @@
     <div class="gradient-wrapper">
         <div class="container animate-popup">
             
-            <nav class="back-nav">
-                <a href="home.html">← Back to Overview</a>
-            </nav>
-
             <div class="feature-hero-card">
                 <div class="main-display-frame">
                     <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/dyna-interf-prev.png" alt="Dynamic Interface Preview">
@@ -175,18 +286,49 @@
                 <div class="content-block">
                     <h1>Dynamic Interface Previews</h1>
                     <p>Experience true visual layout modularity. As your core system changes, layouts assemble and compute layout parameters dynamically. The responsive framework allows engineers and product teams to instantly monitor nested component spaces inside a singular view canvas.</p>
-                    
-                    <div class="spec-list">
-                        <div class="spec-item">
-                            <h4>Real-Time Layout Compiling</h4>
-                            <p>Eliminates separate development compile steps by pushing structural interface renders directly to viewports.</p>
-                        </div>
-                        <div class="spec-item">
-                            <h4>Fluid Grid Breakpoints</h4>
-                            <p>Automatically generates relative layout dimensions, ensuring your output layout performs seamlessly on mobile and web viewports.</p>
-                        </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-image-frame">
+                        <img src="https://raw.githubusercontent.com/ItzNotZombi3/forma-dummy-company/main/images/instrant-prompt-parser.png" alt="Instant Prompt Parser">
+                    </div>
+                    <div class="feature-text">
+                        <h3>Natural Language Compiling</h3>
+                        <p>Describe your workflow, features, or design in everyday language. The engine reads your text and automatically generates clean, production-ready code blocks.</p>
                     </div>
                 </div>
+            </div>
+
+            <h2 class="section-title">Pros &amp; Cons</h2>
+            <div class="split-section">
+                
+                <div class="split-box advantages">
+                    <h3>Advantages</h3>
+                    <div class="list-item">
+                        <strong>Rapid Prototyping</strong>
+                        <span>Shortens typical software development cycles from months down to a few minutes.</span>
+                    </div>
+                    <div class="list-item">
+                        <strong>No-Code Control</strong>
+                        <span>Allows founders and product leaders to launch software directly without engineering roadblocks.</span>
+                    </div>
+                </div>
+
+                <div class="split-box challenges">
+                    <h3>Challenges</h3>
+                    <div class="list-item">
+                        <strong>Logic Boundaries</strong>
+                        <span>Highly complex business logic or custom algorithms may still require a small amount of human fine-tuning.</span>
+                    </div>
+                    <div class="list-item">
+                        <strong>Prompt Clarity</strong>
+                        <span>The quality and accuracy of the generated app depends completely on how detailed your written instructions are.</span>
+                    </div>
+                </div>
+
             </div>
 
         </div>

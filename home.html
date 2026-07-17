@@ -21,9 +21,10 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background-color: #0B0B0F;
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Inter', sans-serif;
-            color: #F5F5F7;
+            color: #FFFFFF;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,33 +33,31 @@
             position: relative;
         }
 
-        /* 🌌 AMBIENT BACKGROUND GLOWS */
+        /* 🌓 40% DARK TINT OVERLAY (5-10% Darker) */
         body::before {
             content: '';
             position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, rgba(48, 213, 200, 0.05) 50%, transparent 100%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 11, 15, 0.4); 
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             z-index: 0;
-            pointer-events: none;
         }
         
+        /* 🌊 FULL-WIDTH CENTERED BANNER WITH SMOOTH MASK GRADIENT */
         .master-banner {
-            width: 100%;
-            max-width: 1200px; 
+            width: 100vw;
+            background: #000000; /* Seamlessly matches the asset's black base */
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             height: 380px;      
-            margin: 20px auto 0 auto;
-            background: linear-gradient(135deg, #111115 0%, #000000 100%);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            margin: 0;
             z-index: 1;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
         }
 
         .master-banner img {
@@ -70,7 +69,6 @@
 
         .gradient-wrapper {
             width: 100vw;
-            background: linear-gradient(to bottom, transparent 0%, #0E0E12 300px, #0B0B0F 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -89,33 +87,28 @@
             align-items: center;
         }
 
-        /* 🌟 TEXT TILE WITH TRANSLUCENT MESH & GRADIENT BORDER */
         .intro-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.85) 0%, rgba(5, 5, 10, 0.75) 100%);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 24px;
             padding: 45px;
             margin-top: 10px;
             margin-bottom: 60px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.25);
             width: 100%;
-            
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .intro-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(0, 113, 227, 0.5);
-            box-shadow: 0 30px 60px rgba(0, 113, 227, 0.1), 0 0 30px rgba(48, 213, 200, 0.1);
+            border-color: rgba(0, 113, 227, 0.8);
         }
 
         .sector-badge {
             display: inline-block;
-            background: linear-gradient(90deg, #0071E3, #30D5C8);
+            background: linear-gradient(90deg, #3399FF, #30D5C8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 12px;
@@ -136,12 +129,13 @@
         .intro-text p {
             font-size: 16px;
             line-height: 1.65;
-            color: #CECED2;
+            color: #FFFFFF;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .site-footer {
             width: 100%;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 30px;
             margin-top: auto;
             text-align: center;
@@ -149,12 +143,13 @@
 
         .site-footer p {
             font-size: 13px;
-            color: #6E6E73;
-            letter-spacing: 0.02em;
+            color: #FFFFFF;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
-            .master-banner { height: 220px; border-radius: 0; margin-top: 0; }
+            .master-banner { height: 220px; }
             .intro-card { padding: 35px 24px; }
             .intro-text h2 { font-size: 26px; }
         }

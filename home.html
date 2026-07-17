@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma - Home</title>
     
     <style>
-        /* 🌐 IMPORT GLOBAL INTER FONT VIA CSS TO BYPASS VALIDATOR ERRORS */
+        /* 🌐 IMPORT GLOBAL INTER FONT VIA CSS */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        /* 🎬 PREMIUM CUBIC-BEZIER ENTRANCE ANIMATION */
+        @keyframes premiumPopup {
+            0% {
+                opacity: 0;
+                transform: scale(0.96) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .animate-popup {
+            animation: premiumPopup 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
 
         /* Base Reset & Core Styling */
         * {
@@ -24,7 +42,7 @@
             overflow-x: hidden;
         }
         
-        /* 🎬 PROMINENT BANNER SIZE */
+        /* 🎬 LARGE HOME BANNER SIZE (Retained from mockup) */
         .master-banner {
             width: 100%;
             max-width: 1200px; 
@@ -51,7 +69,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 30px;
+            padding-top: 30px; 
             padding-bottom: 60px;
         }
 
@@ -223,7 +241,7 @@
 
     <div class="gradient-wrapper">
         
-        <div class="container">
+        <div class="container animate-popup">
             
             <div class="intro-card">
                 <div class="intro-visual">

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma - Project Credits</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        @keyframes premiumPopup {
+            0% { opacity: 0; transform: scale(0.96) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .animate-popup {
+            animation: premiumPopup 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #0b0b0f; 
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* 🌓 Dark overlay layer */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 11, 15, 0.4); 
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 0;
+        }
+
+        .gradient-wrapper {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px;
+            padding-bottom: 80px;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 40%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 15px;
+            color: #E2E2E7;
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* 🔲 Credits Grid Layout */
+        .credits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .credit-card {
+            background: linear-gradient(135deg, rgba(18, 18, 24, 0.85) 0%, rgba(8, 8, 14, 0.75) 100%);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .credit-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .credit-card.full-width {
+            grid-column: span 2;
+        }
+
+        .credit-badge {
+            align-self: flex-start;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #E2E2E7;
+        }
+
+        .contributor-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .contribution-desc {
+            font-size: 14.5px;
+            color: #A1A1A6;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* 🌳 Nested Source List */
+        .nested-sources {
+            list-style: none;
+            margin-bottom: 25px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            padding-left: 15px;
+        }
+
+        .nested-sources li {
+            font-size: 14px;
+            color: #E2E2E7;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .nested-source-link {
+            color: #3399FF;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nested-source-link:hover {
+            color: #66b2ff;
+            text-decoration: underline;
+        }
+
+        .credit-link {
+            display: inline-flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            margin-top: auto;
+        }
+
+        .credit-link:hover {
+            opacity: 0.8;
+        }
+
+        .site-footer {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .site-footer p { font-size: 13px; color: #8E8E93; font-weight: 500; }
+
+        @media (max-width: 768px) {
+            .credits-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .credit-card.full-width {
+                grid-column: span 1;
+            }
+            .page-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gradient-wrapper">
+        <div class="container animate-popup">
+            
+            <h1 class="page-title">Project Credits</h1>
+            <p class="page-subtitle">Shoutout to the creators, open-source resources, and image assets used throughout the project.</p>
+
+            <div class="credits-grid">
+                
+                <!-- 👨‍💻 CORE DEVELOPER CARD -->
+                <div class="credit-card">
+                    <div class="credit-badge" style="border-color: rgba(48, 213, 200, 0.4); color: #30D5C8;">Main Creator</div>
+                    <h3 class="contributor-name">ItzNotZombi3</h3>
+                    <p class="contribution-desc">Handled the design and frontend engineering, glassmorphism UI layouts, responsive styling, and GitHub repository organization.</p>
+                    <a href="https://github.com/ItzNotZombi3" target="_blank" class="credit-link">View GitHub Profile →</a>
+                </div>
+
+                <!-- 🔤 TYPOGRAPHY SYSTEM CARD -->
+                <div class="credit-card">
+                    <div class="credit-badge" style="border-color: rgba(255, 204, 0, 0.4); color: #FFCC00;">Typography</div>
+                    <h3 class="contributor-name">Google Fonts</h3>
+                    <p class="contribution-desc">Provided the 'Inter' font family used for the clean, highly readable UI text and layout hierarchies across the site.</p>
+                    <a href="https://fonts.google.com" target="_blank" class="credit-link">Browse Google Fonts →</a>
+                </div>
+
+                <!-- 🖼 NESTED MEDIA ASSETS CARD (FULL WIDTH) -->
+                <div class="credit-card full-width">
+                    <div class="credit-badge" style="border-color: rgba(157, 78, 221, 0.4); color: #b771f4;">Images</div>
+                    <h3 class="contributor-name">Unsplash</h3>
+                    <p class="contribution-desc">High-quality, professional photography assets utilized within the UI background layers for styling depth.</p>
+                    
+                    <!-- Direct links to authors -->
+                    <ul class="nested-sources">
+                        <li>
+                            Cable Network — 
+                            <a href="https://unsplash.com/photos/cable-network-M5tzZtFCOfs" target="_blank" class="nested-source-link">Taylor Vick</a>
+                        </li>
+                        <li>
+                            Black and White Penguin Toy — 
+                            <a href="https://unsplash.com/photos/black-and-white-penguin-toy-wX2L8L-fGeA" target="_blank" class="nested-source-link">Roman Synkevych</a>
+                        </li>
+                        <li>
+                            Photo of Outer Space — 
+                            <a href="https://unsplash.com/photos/photo-of-outer-space-Q1p7bh3SHj8" target="_blank" class="nested-source-link">NASA</a>
+                        </li>
+                    </ul>
+
+                    <a href="https://unsplash.com" target="_blank" class="credit-link">Visit Unsplash Website →</a>
+                </div>
+
+            </div>
+
+            <footer class="site-footer">
+                <p>&copy; 2026 Forma. Engineered by ItzNotZombi3. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html>

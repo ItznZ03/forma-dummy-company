@@ -6,7 +6,7 @@
     <title>Forma - Pricing Plans</title>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=VT323&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         @keyframes premiumPopup {
             0% { opacity: 0; transform: scale(0.96) translateY(20px); }
@@ -50,7 +50,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 60px; /* 🌟 Adjusted space at the top since logo is gone */
+            padding-top: 60px; 
             padding-bottom: 80px;
             flex-grow: 1;
             z-index: 1;
@@ -300,76 +300,65 @@
         }
         .site-footer p { font-size: 13px; color: #8E8E93; font-weight: 500; }
 
-        /* 📦 MINECRAFT ACHIEVEMENT NOTIFICATION SYSTEM */
-        .mc-toast-container {
+        /* 🔔 MODERN NOTIFICATION SYSTEM (TOP-RIGHT GLASSMORPHISM) */
+        .notif-system {
             position: fixed;
-            top: 20px;
-            right: -320px;
-            width: 290px;
-            background: #212121;
-            border: 4px solid #000000;
-            padding: 10px;
+            top: 25px;
+            right: -360px;
+            width: 320px;
+            background: rgba(20, 20, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             z-index: 9999;
-            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
-            font-family: 'VT323', monospace;
-            image-rendering: pixelated;
-            transition: right 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .mc-toast-container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 2px solid #555555;
-            pointer-events: none;
+        .notif-system.show {
+            right: 25px;
         }
 
-        .mc-toast-container.show {
-            right: 20px;
-        }
-
-        .mc-icon-frame {
-            width: 34px;
-            height: 34px;
-            background: #7a583a;
-            border: 2px solid #3a2211;
-            box-shadow: inset 2px 2px 0 #997352;
+        .notif-icon-frame {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            position: relative;
         }
 
-        .mc-icon-frame::after {
-            content: '✖';
-            color: #ff3b30;
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            text-shadow: 2px 2px 0 #000;
+        .notif-icon-frame svg {
+            width: 18px;
+            height: 18px;
+            stroke: #a1a1a6;
         }
 
-        .mc-text-frame {
+        .notif-text-frame {
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
         }
 
-        .mc-title {
-            color: #ffff55; 
-            font-size: 18px;
-            letter-spacing: 0.5px;
-            text-shadow: 2px 2px 0px #3f3f00;
-            line-height: 1.1;
+        .notif-title {
+            color: #ffffff; 
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
         }
 
-        .mc-desc {
-            color: #ffffff;
-            font-size: 15px;
-            text-shadow: 2px 2px 0px #3f3f3f;
-            line-height: 1.2;
+        .notif-desc {
+            color: #A1A1A6;
+            font-size: 12.5px;
+            line-height: 1.4;
             margin-top: 2px;
         }
 
@@ -396,21 +385,35 @@
                 padding: 14px 12px; 
                 font-size: 13px; 
             }
+
+            .notif-system {
+                top: 20px;
+                right: -100%;
+                width: calc(100% - 40px);
+                margin: 0 20px;
+            }
+            .notif-system.show {
+                right: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Minecraft Toast Node -->
-    <div class="mc-toast-container" id="minecraftToast">
-        <div class="mc-icon-frame"></div>
-        <div class="mc-text-frame">
-            <span class="mc-title">Notice!</span>
-            <span class="mc-desc">Checkout hasn't been implemented yet.</span>
+    <!-- Modern Premium Notification -->
+    <div class="notif-system" id="pricingNotification">
+        <div class="notif-icon-frame">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </div>
+        <div class="notif-text-frame">
+            <span class="notif-title">Notice</span>
+            <span class="notif-desc">Checkout hasn't been implemented yet.</span>
         </div>
     </div>
-
-    <!-- 🌟 LOGO BANNER COMPLETELY REMOVED FROM MARKUP -->
 
     <div class="gradient-wrapper">
         <div class="container animate-popup">
@@ -539,18 +542,24 @@
         </div>
     </div>
 
-    <!-- ⚡ TOAST LOGIC SCRIPT -->
+    <!-- ⚡ NOTIFICATION ENGINE LOGIC -->
     <script>
         let timeoutId;
         function triggerToast() {
-            const toast = document.getElementById('minecraftToast');
+            const notif = document.getElementById('pricingNotification');
             
-            toast.classList.remove('show');
+            notif.classList.remove('show');
             clearTimeout(timeoutId);
             
-            void toast.offsetWidth; 
+            // Force a DOM reflow to retrigger CSS transition instantly
+            void notif.offsetWidth; 
             
-            toast.classList.add('show');
+            notif.classList.add('show');
             
             timeoutId = setTimeout(() => {
-                toast.classL
+                notif.classList.remove('show');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

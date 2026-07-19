@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma - Pricing Plans</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=VT323&display=swap');
+
+        @keyframes premiumPopup {
+            0% { opacity: 0; transform: scale(0.96) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .animate-popup {
+            animation: premiumPopup 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #0b0b0f; 
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* 🌓 40% DARK TINT OVERLAY */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 11, 15, 0.4); 
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 0;
+        }
+
+        .gradient-wrapper {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px; /* 🌟 Adjusted space at the top since logo is gone */
+            padding-bottom: 80px;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 920px;
+            width: 100%;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 40%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 15px;
+            color: #E2E2E7;
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* 🔲 3-COLUMN CARDS WITH DISTINCT COLORS */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+            margin-bottom: 60px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(18, 18, 24, 0.85) 0%, rgba(8, 8, 14, 0.75) 100%);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 24px;
+            padding: 40px 25px 35px 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        /* 🟢 STARTER TILE: AQUA / TEAL */
+        .pricing-card.starter-tier {
+            border: 1px solid rgba(48, 213, 200, 0.25);
+        }
+        .pricing-card.starter-tier:hover {
+            transform: translateY(-8px);
+            border-color: rgba(48, 213, 200, 0.7);
+            box-shadow: 0 25px 50px rgba(48, 213, 200, 0.15);
+        }
+
+        /* 🔵 PRO TILE: ELECTRIC BLUE */
+        .pricing-card.pro-tier {
+            border: 1px solid rgba(0, 113, 227, 0.35);
+            transform: scale(1.03);
+        }
+        .pricing-card.pro-tier:hover {
+            transform: scale(1.03) translateY(-8px);
+            border-color: rgba(0, 113, 227, 0.8);
+            box-shadow: 0 25px 50px rgba(0, 113, 227, 0.2);
+        }
+
+        /* 🟣 TEAM TILE: INDIGO / PURPLE */
+        .pricing-card.team-tier {
+            border: 1px solid rgba(157, 78, 221, 0.3);
+        }
+        .pricing-card.team-tier:hover {
+            transform: translateY(-8px);
+            border-color: rgba(157, 78, 221, 0.7);
+            box-shadow: 0 25px 50px rgba(157, 78, 221, 0.15);
+        }
+
+        /* 🏷 DYNAMIC BADGES */
+        .best-for-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .starter-tier .best-for-badge { background: #143a35; border: 1px solid #30D5C8; color: #30D5C8; }
+        .pro-tier .best-for-badge { background: linear-gradient(90deg, #0071e3, #3399FF); color: #ffffff; }
+        .team-tier .best-for-badge { background: #24123a; border: 1px solid #9d4ede; color: #b771f4; }
+
+        .plan-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .plan-price {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-align: center;
+        }
+        .plan-price span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #A1A1A6;
+        }
+
+        .plan-features-short {
+            list-style: none;
+            margin-bottom: 35px;
+            flex-grow: 1;
+        }
+
+        .plan-features-short li {
+            font-size: 14px;
+            color: #E2E2E7;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .starter-tier .plan-features-short li::before { content: "✓"; color: #30D5C8; font-weight: 800; }
+        .pro-tier .plan-features-short li::before { content: "✓"; color: #3399FF; font-weight: 800; }
+        .team-tier .plan-features-short li::before { content: "✓"; color: #9d4ede; font-weight: 800; }
+
+        /* 🎟 DYNAMIC CHECKOUT BUTTONS */
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+        }
+        .checkout-btn:active { transform: scale(0.97); }
+
+        .starter-tier .checkout-btn { background: rgba(48, 213, 200, 0.15); border: 1px solid #30D5C8; color: #30D5C8; }
+        .starter-tier .checkout-btn:hover { background: #30D5C8; color: #000; }
+
+        .pro-tier .checkout-btn { background: linear-gradient(90deg, #0071e3, #3399FF); box-shadow: 0 4px 20px rgba(0, 113, 227, 0.3); }
+        .pro-tier .checkout-btn:hover { filter: brightness(1.15); box-shadow: 0 6px 24px rgba(0, 113, 227, 0.5); }
+
+        .team-tier .checkout-btn { background: rgba(157, 78, 221, 0.15); border: 1px solid #9d4ede; color: #b771f4; }
+        .team-tier .checkout-btn:hover { background: #9d4ede; color: #fff; }
+
+        /* 📊 CHECKLIST TABLE */
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 50px 0 25px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .checklist-table-wrapper {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.75) 0%, rgba(5, 5, 10, 0.65) 100%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        .checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .checklist-table th, .checklist-table td {
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .checklist-table th {
+            background: rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .checklist-table td:not(:first-child), .checklist-table th:not(:first-child) {
+            text-align: center;
+        }
+
+        .checklist-table tr:last-child td { border-bottom: none; }
+        .checklist-table tr:hover td { background: rgba(255, 255, 255, 0.03); }
+
+        .check-icon { font-weight: bold; }
+        .starter-check { color: #30D5C8; }
+        .pro-check { color: #3399FF; }
+        .team-check { color: #9d4ede; }
+        .dash-icon { color: #48484a; }
+
+        /* 📑 BRIEF FAQS */
+        .faq-section {
+            width: 100%;
+            max-width: 750px;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 14px;
+            transition: border-color 0.3s ease;
+        }
+        .faq-item:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .faq-item h4 { font-size: 16px; margin-bottom: 8px; color: #ffffff; }
+        .faq-item p { font-size: 14px; color: #A1A1A6; line-height: 1.5; }
+
+        /* FOOTER */
+        .site-footer {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .site-footer p { font-size: 13px; color: #8E8E93; font-weight: 500; }
+
+        /* 📦 MINECRAFT ACHIEVEMENT NOTIFICATION SYSTEM */
+        .mc-toast-container {
+            position: fixed;
+            top: 20px;
+            right: -320px;
+            width: 290px;
+            background: #212121;
+            border: 4px solid #000000;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+            font-family: 'VT323', monospace;
+            image-rendering: pixelated;
+            transition: right 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .mc-toast-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 2px solid #555555;
+            pointer-events: none;
+        }
+
+        .mc-toast-container.show {
+            right: 20px;
+        }
+
+        .mc-icon-frame {
+            width: 34px;
+            height: 34px;
+            background: #7a583a;
+            border: 2px solid #3a2211;
+            box-shadow: inset 2px 2px 0 #997352;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .mc-icon-frame::after {
+            content: '✖';
+            color: #ff3b30;
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .mc-text-frame {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mc-title {
+            color: #ffff55; 
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 0px #3f3f00;
+            line-height: 1.1;
+        }
+
+        .mc-desc {
+            color: #ffffff;
+            font-size: 15px;
+            text-shadow: 2px 2px 0px #3f3f3f;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+
+        /* 📱 RESPONSIVE LAYOUT ADJUSTMENTS */
+        @media (max-width: 768px) {
+            .gradient-wrapper {
+                padding-top: 35px;
+            }
+
+            .pricing-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            }
+            
+            .pricing-card.pro-tier { 
+                transform: none; 
+            }
+            
+            .pricing-card.pro-tier:hover { 
+                transform: translateY(-8px); 
+            }
+            
+            .checklist-table th, .checklist-table td { 
+                padding: 14px 12px; 
+                font-size: 13px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Minecraft Toast Node -->
+    <div class="mc-toast-container" id="minecraftToast">
+        <div class="mc-icon-frame"></div>
+        <div class="mc-text-frame">
+            <span class="mc-title">Notice!</span>
+            <span class="mc-desc">Checkout hasn't been implemented yet.</span>
+        </div>
+    </div>
+
+    <!-- 🌟 LOGO BANNER COMPLETELY REMOVED FROM MARKUP -->
+
+    <div class="gradient-wrapper">
+        <div class="container animate-popup">
+            
+            <h1 class="page-title">Simple, Flexible Pricing</h1>
+            <p class="page-subtitle">Choose the plan that matches your project requirements and development scale.</p>
+
+            <!-- 🔲 GRID TILES -->
+            <div class="pricing-grid">
+                
+                <!-- Starter Plan -->
+                <div class="pricing-card starter-tier">
+                    <div class="best-for-badge">Best for Learners</div>
+                    <h3 class="plan-name">Starter Plan</h3>
+                    <div class="plan-price">$0 <span>/ forever</span></div>
+                    <ul class="plan-features-short">
+                        <li>Up to 2 active projects</li>
+                        <li>Standard layout generation</li>
+                        <li>Basic web code export</li>
+                        <li>Community tech support</li>
+                    </ul>
+                    <button class="checkout-btn" onclick="triggerToast()">Proceed to Checkout</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card pro-tier">
+                    <div class="best-for-badge">Best for Students &amp; Creators</div>
+                    <h3 class="plan-name">Pro Plan</h3>
+                    <div class="plan-price">$15 <span>/ month</span></div>
+                    <ul class="plan-features-short">
+                        <li>Unlimited active projects</li>
+                        <li>Instant layouts &amp; frameworks</li>
+                        <li>Advanced system structures</li>
+                        <li>Standard custom domains</li>
+                        <li>24/7 priority support</li>
+                    </ul>
+                    <button class="checkout-btn" onclick="triggerToast()">Proceed to Checkout</button>
+                </div>
+
+                <!-- Team Plan -->
+                <div class="pricing-card team-tier">
+                    <div class="best-for-badge">Best for Group Work</div>
+                    <h3 class="plan-name">Team Plan</h3>
+                    <div class="plan-price">$49 <span>/ month</span></div>
+                    <ul class="plan-features-short">
+                        <li>Everything in Pro plan</li>
+                        <li>Collaborative cloud editing</li>
+                        <li>Shared asset database</li>
+                        <li>Full analytical tools</li>
+                    </ul>
+                    <button class="checkout-btn" onclick="triggerToast()">Proceed to Checkout</button>
+                </div>
+
+            </div>
+
+            <!-- 📊 CHECKLIST TABLE -->
+            <h2 class="section-title">Compare All Plan Features</h2>
+            <div class="checklist-table-wrapper">
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th>ICT Metric / Feature</th>
+                            <th>Starter</th>
+                            <th>Pro</th>
+                            <th>Team</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maximum Active Projects</td>
+                            <td>2 Projects</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Layout Automation Engine</td>
+                            <td><span class="check-icon starter-check">✓</span> Standard</td>
+                            <td><span class="check-icon pro-check">✓</span> Advanced</td>
+                            <td><span class="check-icon team-check">✓</span> Advanced</td>
+                        </tr>
+                        <tr>
+                            <td>Cloud Storage Capability</td>
+                            <td>500 MB</td>
+                            <td>10 GB</td>
+                            <td>50 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Collaborative Editing Workspace</td>
+                            <td><span class="dash-icon">—</span></td>
+                            <td><span class="dash-icon">—</span></td>
+                            <td><span class="check-icon team-check">✓</span> Enabled</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Code Export (.html/.css)</td>
+                            <td><span class="check-icon starter-check">✓</span> Basic Only</td>
+                            <td><span class="check-icon pro-check">✓</span> Full Clean Code</td>
+                            <td><span class="check-icon team-check">✓</span> Full Clean Code</td>
+                        </tr>
+                        <tr>
+                            <td>System Error Check &amp; Testing</td>
+                            <td><span class="dash-icon">—</span></td>
+                            <td><span class="check-icon pro-check">✓</span> Automated</td>
+                            <td><span class="check-icon team-check">✓</span> Automated</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 📑 BRIEF FAQS -->
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h4>Can I upgrade or cancel my subscription plan anytime?</h4>
+                    <p>Yes, you can upgrade, downgrade, or terminate your active service tier easily from your project dashboard settings at any time.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I completely own the code generated by Forma?</h4>
+                    <p>Absolutely. Any structural layouts, UI components, or logic code systems you design belong entirely to you or your team.</p>
+                </div>
+            </div>
+
+            <footer class="site-footer">
+                <p>&copy; 2026 Forma. Engineered by ItzNotZombi3. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- ⚡ TOAST LOGIC SCRIPT -->
+    <script>
+        let timeoutId;
+        function triggerToast() {
+            const toast = document.getElementById('minecraftToast');
+            
+            toast.classList.remove('show');
+            clearTimeout(timeoutId);
+            
+            void toast.offsetWidth; 
+            
+            toast.classList.add('show');
+            
+            timeoutId = setTimeout(() => {
+                toast.classL
